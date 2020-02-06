@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Header, Button, Modal } from "semantic-ui-react";
 import axios from "axios";
 import baseUrl from "../../utils/baseUrl";
 import { useRouter } from "next/router";
 
 function ProductAttributes({ description, _id }) {
+  const [modal, setModal] = React.useState(false);
   const router = useRouter();
-  const [modal, setModal] = useState(false);
 
   async function handleDelete() {
     const url = `${baseUrl}/api/product`;
@@ -31,14 +31,13 @@ function ProductAttributes({ description, _id }) {
           <p>Are you sure you want to delete this product?</p>
         </Modal.Content>
         <Modal.Actions>
-          <Button content="Cancel" onClick={() => setModal(false)} />
+          <Button onClick={() => setModal(false)} content="Cancel" />
           <Button
-            content="Delete"
-            onClick={handleDelete}
             negative
             icon="trash"
             labelPosition="right"
             content="Delete"
+            onClick={handleDelete}
           />
         </Modal.Actions>
       </Modal>
