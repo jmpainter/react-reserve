@@ -1,5 +1,4 @@
 function catchErrors(error, displayError) {
-  console.log(error);
   let errorMsg;
   if (error.response) {
     // The request was made and the server responsed with a status code that is not in the range of 2XX
